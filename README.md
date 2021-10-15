@@ -1,6 +1,6 @@
 # Moonsense Web SDK
 
-The following sample apps have been created.
+This repository hosts the releases of the Moonsense Web SDK and includes sample applications that provide insight into incorporating and using the SDK.
 
 ## Setup
 - Clone this repository.
