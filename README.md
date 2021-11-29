@@ -137,6 +137,8 @@ The following sensors are currently available:
 * Acceleration - monitors acceleration with gravity included
 * Linear Acceleration - monitors acceleration with gravity excluded
 * Pointer - monitors all touch events within the browser page
+* Text Change - monitors all input fields for text changes
+* Key Press - monitors for all key press events
 
 ## Sample React App Implementation
 

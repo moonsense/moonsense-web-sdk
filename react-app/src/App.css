@@ -119,6 +119,13 @@ button.buy {
   border-bottom: none;
 }
 
+.divider {
+  height: 2px;
+  width: 95%;
+  background: darkgrey;
+  margin: 20px auto 10px auto;
+}
+
 .swipe-to-buy {
   background: white;
   border-radius: 56px;
@@ -144,6 +151,7 @@ button.buy {
   appearance: none;
   width: 60px;
   height: 60px;
+  margin-top: 1px;
   border-radius: 50%; 
   cursor: pointer;
   color: white;
@@ -159,6 +167,7 @@ button.buy {
 .swipe-to-buy > .slider::-moz-range-thumb {
   width: 60px;
   height: 60px;
+  margin-top: 1px;
   border-radius: 50%;
   cursor: pointer;
   background: url('slider.png');
@@ -180,6 +189,50 @@ button.buy {
 
 .swipe-to-buy.success > .background-text {
   color: #1FCC5F;
+}
+
+.card-input{
+  background: black;
+  color: #D8D8D8;
+  width: calc(100% - 34px); /* 16px padding + 1px border */
+  height: 64px;
+  border: 1px solid #69676B;
+  font-size: 16px;
+  padding: 0px 16px;
+}
+
+.card-input::placeholder {
+  color: #D8D8D8;
+}
+
+.card-input:focus-visible {
+  outline: none;
+}
+
+.cc-details {
+  display: flex;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+
+.cc-details > input {
+  width: auto;
+  flex-grow: 1;
+  margin-right: 15px;
+}
+
+.cc-details > input:last-child {
+  margin-right: 0px;
+}
+
+.cc-details > input::-webkit-outer-spin-button,
+.cc-details > input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.cc-details > input[type=number] {
+  -moz-appearance: textfield;
 }
 
 @media screen and (max-width: 600px) {

@@ -29,6 +29,11 @@ This will launch a local webserver that will serve the react app. Then you shoul
 
 Data for the Session can then be viewed on the [Moonsense Console](https://console.moonsense.cloud) on the Sessions page for your associated App.
 
+
+## Labeling Data
+
+The app includes a default label of `ReactPayment` on all sessions created. Using other labels can be done by including a `labels` query parameter. For example, adding the following to the url `?labels=BotDetection,SampleApp` would store the sessions with the labels `BotDetection` and `SampleApp` instead of the default label. 
+
 ## NOTE
 
 For the sensors to be accessible through the browser, the application must be running in a secure context. For this reason the app is launched with `HTTPS=true` and you may see security warnings when navigating to the page. Chrome disallows navigating to insecure localhost pages by default but provides a flag for allowing them. More can be found by navigating to `chrome://flags/#allow-insecure-localhost` in Chrome.

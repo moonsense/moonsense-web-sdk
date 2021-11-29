@@ -3,6 +3,7 @@ import MoonsenseSdk from './MoonsenseSdk';
 import './App.css';
 
 function App() {
+
   // Setup state tracking objects
   const [modalOpen, setModalOpen] = useState(false); // track checkout modal status
   const [orderSuccess, setOrderSuccess] = useState(false); // track order status
@@ -79,8 +80,14 @@ function App() {
   const doCheckout = () => {
     setModalOpen(true);
 
+    const params = new URLSearchParams(window.location.search).get('labels');
+    const labels = params ? params.split(',') : ['ReactPayment'];
+
     // Starts recording a session with a 60 second duration and labeled 'ReactPayment'
-    moonsense.startSession(60000, ['ReactPayment']);
+    moonsense.startSession({
+      duration: 60000, 
+      labels
+    });
   }
 
   /**
@@ -143,10 +150,14 @@ function App() {
     <div className="modal">
       <div className="modal-content">
         <div className="details">
-          <div className="item">
-            <span>Card</span>
-            <span>xxxx xxxx xxxx 3981</span>
+          <div>
+            <input className="card-input" type="text" maxLength="19" placeholder="Enter a FAKE credit card number" target-element-id="credit-card" />
           </div>
+          <div className="cc-details">
+            <input className="card-input" type="text" maxLength="4" placeholder="Fake Exp Date" target-element-id="credit-card-exp" />
+            <input className="card-input" type="text" maxLength="3" placeholder="Fake CVC" target-element-id="credit-card-cvc" />
+          </div>
+          <div className="divider"></div>
           <div className="item">
             <span><b>Total</b></span>
             <span><b>{formatter.format(total())}</b></span>
