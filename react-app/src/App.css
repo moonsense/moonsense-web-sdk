@@ -89,11 +89,15 @@ button.buy {
   display: flex;
   align-items: flex-end;
   justify-content: center;
+
+  /* Makes sure pointer updates continue to come in on mobile devices */
+  touch-action: none;
 }
 
 .modal > .modal-content {
   width: 100%;
-  max-width: calc(600px - 48px);
+  max-width: 100%;
+  overflow: hidden;
   height: auto;
   background: black;
   color: white;
@@ -238,6 +242,19 @@ button.buy {
 @media screen and (max-width: 600px) {
   body {
     padding: 0px 20px;
+  }
+
+  .cc-details {
+    flex-wrap: wrap;
+  }
+
+  .cc-details > input {
+    margin-right: 0px;
+    margin-bottom: 10px;
+  }
+
+  .cc-details > input:last-child {
+    margin-bottom: 0px;
   }
 }
 

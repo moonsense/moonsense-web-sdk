@@ -37,6 +37,5 @@ export default class MoonsenseSdk {
     static instance = Moonsense.instance || new Moonsense({
         publicToken: moonsensePublicToken, // the API token for this App
         moonsenseCallback: myCallback, // The callback created above
-        controlPlaneUrl: 'https://api.moonsense.dev',
     });
 }

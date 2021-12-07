@@ -127,6 +127,19 @@ function App() {
   }
 
   /**
+   * Tracks the release of the 'swipe to buy' slider
+   * and resets it if the slider isn't all the way
+   * to the right
+   * 
+   * @param event slider event
+   */
+   const sliderRelease = (event) => {
+    if (event.target.value < 99) {
+      event.target.value = 0;
+    }
+  }
+
+  /**
    * Generates the jsx for an item in an item list
    * 
    * @param item the item to display
@@ -164,7 +177,7 @@ function App() {
           </div>
         </div>
         <div className={`swipe-to-buy ${orderSuccess ? 'success' : ''}`}>
-          <input className="slider" type="range" min="1" max="100" defaultValue="0" disabled={orderSuccess} onInput={sliderUpdate} />
+          <input className="slider" type="range" min="1" max="100" defaultValue="0" disabled={orderSuccess} onInput={sliderUpdate} onMouseUp={sliderRelease} />
           <span className="background-text">{orderSuccess ? 'Success' : 'Swipe to buy'}</span>
         </div>
       </div>
