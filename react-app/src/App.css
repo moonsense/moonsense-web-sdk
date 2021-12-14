@@ -262,4 +262,8 @@ button.buy {
   .modal {
     align-items: center;
   }
+
+  .modal > .modal-content {
+    max-width: 600px;
+  }
 }
