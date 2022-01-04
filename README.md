@@ -1,20 +1,26 @@
 # Moonsense Web SDK
 
-This repository hosts the releases of the Moonsense Web SDK and includes sample applications that provide insight into incorporating and using the SDK.
+This repository includes sample applications that provide insight into incorporating and using the SDK.
+
+## Documentation
+
+The instructions provided below provide basic setup instructions for pulling the Moonsense Web SDK from the Moonsense repos and a quick overview on running the included sample application. 
+
+For more in depth information visit the [documentation website](https://docs.moonsense.io/) for further details on [Getting Started with the Web SDK](https://docs.moonsense.io/articles/sdk/getting-started-sdk/web), [setting up credentials and applications](https://staging.docs.moonsense.io/articles/console/getting-started) in the [Moonsense Console](https://console.moonsense.cloud/), and collecting sample data with the [Moonsense Recorder](https://docs.moonsense.io/articles/recorder/getting-started).
 
 ## Setup
 - Clone this repository.
-- Generate a [personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) on Github with `read:packages` permissions.
-- Tell NPM about your Github `token` and tell it to use the Github Package repo for @moonsense packages. The easiest way to do this is to add the following lines to a file named `.npmrc` in the project directory.
+- You need a `repo_access_token` to connect to the NPM repository. This token should have been provided to you. In case you do not have one contact [support@moonsense.io](mailto:support@moonsense.io).
+- Tell NPM about your `repo_access_token`. The easiest way to do this is to add the following lines to a file named `.npmrc` in the project directory. This file has already been created in the sample app, you just need to fill in the value for your `repo_access_token`.
 
 ```
-//npm.pkg.github.com/:_authToken=<github auth token>
-@moonsense:registry=https://npm.pkg.github.com
+@moonsense:registry=https://npm.moonsense.io/sdk/
+//npm.moonsense.io/sdk/:_authToken=<repo_access_token>
 ```
 
 ## Integration
 
-The SDK is setup using [Github Packages](https://github.com/features/packages). And can be included in your project by running the following command:
+The SDK is setup using [Node Package Manager (NPM)](https://docs.npmjs.com/about-npm). And can be included in your project by running the following command:
 
 - Install the package into your project
 ```
