@@ -159,4 +159,4 @@ This SDK is distributed under the [Moonsense Terms Of Service](https://www.moons
 
 ## Support
 
-Feel free to raise an [Issue](https://github.com/moonsense/moonsense-android-sdk/issues) around bugs, usage, concerns or feedback.
+Feel free to raise an [Issue](https://github.com/moonsense/moonsense-web-sdk/issues) around bugs, usage, concerns or feedback.
