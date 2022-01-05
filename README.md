@@ -6,7 +6,7 @@ This repository includes sample applications that provide insight into incorpora
 
 The instructions provided below provide basic setup instructions for pulling the Moonsense Web SDK from the Moonsense repos and a quick overview on running the included sample application. 
 
-For more in depth information visit the [documentation website](https://docs.moonsense.io/) for further details on [Getting Started with the Web SDK](https://docs.moonsense.io/articles/sdk/getting-started-sdk/web), [setting up credentials and applications](https://docs.moonsense.io/articles/console/getting-started) in the [Moonsense Console](https://console.moonsense.cloud/), and collecting sample data with the [Moonsense Recorder](https://docs.moonsense.io/articles/recorder/getting-started).
+For more in depth information visit the [documentation website](https://docs.moonsense.io/) for further details on [Getting Started with the Web SDK](https://docs.moonsense.io/articles/sdk/getting-started-sdk/web), [setting up credentials and applications](https://docs.moonsense.io/articles/cloud/getting-started) in the [Moonsense Console](https://console.moonsense.cloud/), and collecting sample data with the [Moonsense Recorder](https://docs.moonsense.io/articles/recorder/getting-started).
 
 ## Setup
 - Clone this repository.
