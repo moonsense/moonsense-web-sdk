@@ -82,6 +82,37 @@ const sdkConfig = {
     // The minimum level of logs that should 
     // be output to the console
     logLevel: 'error', // optional
+
+    /**
+     * **[Optional]** A list of defuault sensors the `Session` should record.
+     * 
+     * Defaults to all sensors
+     * 
+     * **Note**: Requesting the sensor does not mean that the sensor will be recorded.
+     * Sensor availability is subject to platform and device capabilities as well
+     * as permissions given to the implementing application.
+     */
+    sensorTypes: Array<AvailableSensors>,
+
+    /**
+     * **[Optional]** The requested sampling rate, in hertz, used by the 
+     * SDK for sensors that support it, such as the Accelerometer. 
+     * E.g., a value of 20 means that the SDK will try to sample 
+     * data 20 times per second. 
+     * 
+     * Defaults to 25hz
+     */
+    globalSamplingRate: number,
+
+    /**
+     * **[Optional]** The rate, in milliseconds, at which a bundle is generated from the
+     * accumulated data for the session and flushed.
+     * The actual rate seen is subject to data availability, 
+     * network availability, etc...
+     * 
+     * Defaults to 1000ms
+     */
+    bundleGenerationInterval: number,
 }
 ```
 
@@ -119,7 +150,26 @@ The SDK records in Sessions. A Session is defined as a single start and stop poi
 
 ```javascript
 // Creates a session that will record for up to 20 seconds
-const session = moonsenseSdk.startSesssion(20000);
+const session = moonsenseSdk.startSesssion({
+    /**
+     * The maximum length of time to record a session in milliseconds
+     */
+    duration: 20000,
+
+    /**
+     * **[Optional]** A list of labels to apply to the session when it's created.
+     * 
+     * Defaults to all sensors
+     */
+    labels: ['Label1', 'Label2'],
+
+    /**
+     * **[Optional]** A list of sensors to use for this specific Session.
+     * 
+     * Defaults to all SdkConfig.sensorTypes if set, otherwise defaults to all sensors
+     */
+    sensorTypes: [AvailableSensors.ACCELEROMETER],
+});
 ```
 
 A session can also be terminated early using the following:
