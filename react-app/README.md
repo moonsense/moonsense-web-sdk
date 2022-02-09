@@ -3,8 +3,6 @@
 This app is a very basic React Application that includes the Moonsense SDK. The SDK is wired into a 
 modal that offers a 'Swipe to Buy' widget. The SDK is setup to record while that modal is open.
 
-A [MoonsenseSdk](src/Moonsense.js) singleton wrapper has been created for convenience.
-
 All logic for the App and usage of the SDK are in the [App.js](src/App.js) file.
 
 <p align="center">

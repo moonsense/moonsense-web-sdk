@@ -1,5 +1,6 @@
 import { useState, } from 'react';
-import MoonsenseSdk from './MoonsenseSdk';
+import { moonsensePublicToken } from './api-key';
+import Moonsense from '@moonsense/moonsense-web-sdk';
 import './App.css';
 
 function App() {
@@ -25,10 +26,44 @@ function App() {
 
 
   /**
-   * A Moonsense singleton for generating and
-   * controlling active recording Sessions
+   * Initialize the Moonsense SDK if is not already
+   * initialized
    */
-  const moonsense = MoonsenseSdk.instance;
+  if (!Moonsense.isInitialized()) {
+    /** 
+     * A callback function to be passed to the Moonsense
+     * SDK to track session creation
+     */
+    const myCallback = {
+
+      /**
+       * Triggered when a Moonsense Session is started
+       */
+      onSessionStarted: (session) => {
+        console.log('Session start callback called');
+      },
+
+      /**
+       * Triggered when a Moonsense Session ends
+       */
+      onSessionStopped: (session) => {
+        console.log('Session stop callback called');
+      },
+
+      /**
+       * Triggered when the Moonsense Session
+       * experiences an error
+       */
+      onSessionError: (msg) => {
+        console.warn('Session error occurred', msg);
+      }
+    }
+
+    Moonsense.initialize({
+      publicToken: moonsensePublicToken, // the API token for this App
+      moonsenseCallback: myCallback, // The callback created above
+    });
+  }
 
   const taxRate = 0.075; // establish a tax rate
 
@@ -84,8 +119,8 @@ function App() {
     const labels = params ? params.split(',') : ['ReactPayment'];
 
     // Starts recording a session with a 60 second duration and labeled 'ReactPayment'
-    moonsense.startSession({
-      duration: 60000, 
+    Moonsense.startSession({
+      duration: 60000,
       labels
     });
   }
@@ -94,7 +129,7 @@ function App() {
    * Closes the order and resets the counts
    */
   const closeOrder = () => {
-    moonsense.stopAllSessions();
+    Moonsense.stopAllSessions();
 
     // Show the payment success screen after a short delay
     setTimeout(() => {
@@ -133,7 +168,7 @@ function App() {
    * 
    * @param event slider event
    */
-   const sliderRelease = (event) => {
+  const sliderRelease = (event) => {
     if (event.target.value < 99) {
       event.target.value = 0;
     }
@@ -187,7 +222,7 @@ function App() {
   /**
    * Generates the jsx for the 'payment success' modal
    */
-   const renderPaymentSuccess = () => (
+  const renderPaymentSuccess = () => (
     <div className="modal">
       <div className="modal-content payment-success">
         <div className="details">
@@ -205,7 +240,7 @@ function App() {
         </h1>
         <div className="item-list">
           {
-            items.map( (item) => renderItem(item))
+            items.map((item) => renderItem(item))
           }
         </div>
         <div className="divider"></div>
@@ -226,7 +261,7 @@ function App() {
             <span className="item-price"><b>{formatter.format(total())}</b></span>
           </div>
         </div>
-        <button className="buy" onClick={() => {doCheckout()}}>Buy</button>
+        <button className="buy" onClick={() => { doCheckout() }}>Buy</button>
       </div>
 
       {
@@ -246,7 +281,7 @@ function App() {
         modalOpen && paymentSuccess &&
         renderPaymentSuccess()
       }
-      
+
     </div>
   );
 }

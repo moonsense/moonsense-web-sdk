@@ -35,8 +35,7 @@ The SDK supports integration in a number of ways including as an ES6 module or v
 
 ### Instantiation
 
-The SDK can be instantiated either via the `init(...)` method or
-by creating a new instance of the `Moonsense(...)` object. Both can be setup with an init object as such:
+The SDK can be instantiated either via the `initialize(...)` method.
 
 ```javascript
 /** 
@@ -71,7 +70,7 @@ const myCallback = {
     }
 }
 
-// The config to pass to new Moonsense(...) or init(...)
+// The config to pass to new Moonsense(...)
 const sdkConfig = {
     // the PublicToken for this App
     publicToken: '<your_public_token>', // required
@@ -123,14 +122,14 @@ const sdkConfig = {
 import { Moonsense } from '@moonsense/moonsense-web-sdk';
 
 // Create an instance of the SDK
-const moonsenseSdk = new Moonsense(sdkConfig);
+Moonsense.initialize(sdkConfig);
 
 ```
 
 #### CommonJS with Require
 ```javascript
 const moonsenseWebSdk = require('./moonsense-web-sdk.js');
-const moonsenseSdk = moonsenseWebSdk.init(sdkConfig);
+moonsenseWebSdk.Moonsense.initialize(sdkConfig);
 
 ```
 
@@ -140,7 +139,7 @@ const moonsenseSdk = moonsenseWebSdk.init(sdkConfig);
 <script src="/moonsense-web-sdk.js"></script>
 
 <script>
-    const moonsenseSdk = moonsenseWebSdk.init(sdkConfig);
+    MoonsenseSdk.Moonsense.initialize(sdkConfig);
 </script>
 ```
 
@@ -181,7 +180,7 @@ session.stopSession();
 Or all sessions can be stopped using:
 ```javascript
 // Stops all sessions
-moonsenseSdk.stopAllSessions();
+MoonsenseSdk.Moonsense.stopAllSessions();
 ```
 
 ## Included Sensors
@@ -201,7 +200,6 @@ The following sensors are currently available:
 The React App implementation shows how to incorporate the Moonsense SDK into a React Application. It includes a singleton wrapper and triggering of Session creation and ending sessions based on user interaction.
 
 More details can be found in the following folder: [react-app](react-app)
-
 
 ## Terms Of Service
 

@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "declaration": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
+    "lib": [ "es2015", "dom" ],
+    "allowJs": true,
+    "moduleResolution": "node",
+    "stripInternal": true,
+    "skipLibCheck": true,
+  },
+  "exclude": [
+    "node_modules",
+  ],
+}

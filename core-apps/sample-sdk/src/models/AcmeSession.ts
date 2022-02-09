@@ -1,0 +1,3 @@
+interface AcmeSession {
+    id: string;
+}

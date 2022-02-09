@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+
+  <script src="/acme-sdk.js"></script>
+  <script src="/use-sdk.js"></script>
+  <title>Acme SDK</title>
+
+  <style>
+    body, html {
+      touch-action: none;
+      background: darkblue;
+    }
+    .acme-wrapper {
+      width: 600px;
+      max-width: 600px;
+      min-width: 600px;
+      padding: 20px;
+      margin: auto;
+      background: white;
+      border-radius: 20px;
+      text-align: center;
+    }
+    .acme-sessions {
+      margin-top: 20px;
+    }
+
+    #session-list {
+      text-align: left;
+      list-style: none;
+    }
+
+    .header {
+      margin-bottom: 20px;
+    }
+
+    .record-btn {
+      background-color: #646483;
+      padding: 16px;
+      border-radius: 8px;
+      border: #3d3d4e;
+      color: white;
+      font-size: 2em;
+    }
+  </style>
+</head>
+<body>
+  <div class="acme-wrapper">
+    <div class="header">
+      <img src="/acme-logo.png" alt="Acme Logo" />
+    </div>
+    <p>
+      Click the record button below to launch an Acme Session
+    </p>
+    <button class="record-btn" onclick="record()">Record</button>
+  </div>
+  <div class="acme-wrapper acme-sessions">
+    <h3>Bundle List</h3>
+    <p id="empty-text">Bundles will appear here as they are added</p>
+    <ul id="session-list"></ul>
+  </div>
+</body>
+</html>
