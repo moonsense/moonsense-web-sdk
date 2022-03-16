@@ -1,6 +1,6 @@
 # Sample Core SDK Application
 
-:warning: This application requires the Moonsense Web Core SDK. The Core SDK does not integrate with the Moonsense Cloud is requires separate licensing. If you are interested, please reach out to support@moonsense.io.
+:warning: This application requires the Moonsense Web Core SDK. The Core SDK does not integrate with the Moonsense Cloud requires separate licensing. If you are interested, please reach out to support@moonsense.io.
 
 This project demonstrates how to create an SDK that integrates the Moonsense Web Core SDK. The project includes an SDK created for a fictitious company named `Acme`. The file [AcmeSdk.ts](src/AcmeSdk.ts) is the primary entry point for the SDK. The SDK is setup with two extenal facing functions `intialize(...)` to setup the SDK and `record()` to launch an `AcmeSession`. When an `AcmeSession` is started, it also launches a Moonsense Session to record the available sensors. The AcmeSDK then pushes bundle data via HTTP request to a backend application.
 

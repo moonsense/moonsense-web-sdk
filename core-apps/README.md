@@ -1,10 +1,10 @@
-# Moonsense Web SDK
+# Moonsense Web Core SDK
 
 This repository includes sample applications that provide insight into incorporating and using the SDK.
 
 ## Documentation
 
-The instructions provided below provide basic setup instructions for pulling the Moonsense Web SDK from the Moonsense repos and a quick overview on running the included sample application. 
+The instructions provided below provide basic setup instructions for pulling the Moonsense Web Core SDK from the Moonsense repos and a quick overview on running the included sample application. 
 
 For more in depth information visit the [documentation website](https://docs.moonsense.io/) for further details on [Getting Started with the Web SDK](https://docs.moonsense.io/articles/sdk/getting-started-sdk/web), [setting up credentials and applications](https://docs.moonsense.io/articles/console/getting-started) in the [Moonsense Console](https://console.moonsense.cloud/), and collecting sample data with the [Moonsense Recorder](https://docs.moonsense.io/articles/recorder/getting-started).
 
@@ -24,17 +24,10 @@ The SDK is setup using [Node Package Manager (NPM)](https://docs.npmjs.com/about
 
 - Install the package into your project
 ```
-npm install --save @moonsense/moonsense-web-sdk
-```
-
-- If your project does not already include ProtobufJS or you get a peerDependency warning, you will need to install it
-```
-npm install --save protobufjs
+npm install --save @moonsense/moonsense-web-core-sdk
 ```
 
 ## Usage
-
-The SDK requires some configuration information to be setup and associate correctly with your app. To continue, you will need to create a `publicToken` for you app on the [Moonsense Console](https://console.moonsense.cloud/).
 
 The SDK supports integration in a number of ways including as an ES6 module or via CommonJS
 
@@ -67,6 +60,13 @@ const myCallback = {
     },
 
     /**
+     * Triggered when a sensor data Bundle is created inside a session
+     * /
+    onBundleCreated: (session, bundle) => {
+        console.log('Bundle created callback called');
+    }
+
+    /**
      * Triggered when the Moonsense Session
      * experiences an error
      */
@@ -77,8 +77,6 @@ const myCallback = {
 
 // The config to pass to new Moonsense(...)
 const sdkConfig = {
-    // the PublicToken for this App
-    publicToken: '<your_public_token>', // required
 
     // The callback created above
     moonsenseCallback: myCallback, // optional
@@ -195,21 +193,16 @@ The SDK has the capability of monitoring multiple sensors based on availability 
 The following sensors are currently available:
 
 * Acceleration - monitors acceleration with gravity included
-* Focus Change - monitors inputs for gain/loss of focus
-* Key Press - monitors for all key press events
 * Linear Acceleration - monitors acceleration with gravity excluded
-* Location - the latitude, longitude, altitude, and speed of the device
-* Mouse Wheel - monitors interaction with the mouse wheel
 * Pointer - monitors all touch events within the browser page
-* Scroll - monitors overall scrolling of the browser page
 * Text Change - monitors all input fields for text changes
+* Key Press - monitors for all key press events
 
+## Sample SDK App Implementation
 
-## Sample React App Implementation
+A simple SDK wrapper has been created to show an example usage of the Moonsense Web Core SDK.
 
-The React App implementation shows how to incorporate the Moonsense SDK into a React Application. It includes a singleton wrapper and triggering of Session creation and ending sessions based on user interaction.
-
-More details can be found in the following folder: [react-app](react-app)
+More details can be found in the following folder: [sample-sdk](sample-sdk)
 
 ## Terms Of Service
 
