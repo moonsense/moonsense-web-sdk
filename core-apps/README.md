@@ -186,6 +186,22 @@ Or all sessions can be stopped using:
 MoonsenseSdk.Moonsense.stopAllSessions();
 ```
 
+### Backgrounding and Data Transfer
+
+When the SDK determines that the implementating page is going in the background due to switching tabs or closing the page, the SDK performs a flush of all sensors. When receiving this data, it's best to use the [Beacon API](https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API) to transfer the data to your backend as using XHR/Fetch requests may be cancelled by the browser. 
+
+To determine if the page has moved to the background, the following can be used in the bundle callback method:
+
+```javascript
+    if (document.visibilityState === 'hidden') {
+        // Page is in the background.
+        // Send data over Beacon API.
+    } else {
+        // Page is rendering or in the foreground.
+        // Send data using standard approach.
+    }
+```
+
 ## Included Sensors
 
 The SDK has the capability of monitoring multiple sensors based on availability within the browser. The SDK will make a best effort to connect and monitor sensors using numerous methods based on the browser being used. 
