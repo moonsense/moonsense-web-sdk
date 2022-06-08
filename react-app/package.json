@@ -10,7 +10,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "@moonsense/moonsense-web-sdk": "0.6.2"
+    "@moonsense/moonsense-web-sdk": "0.7.0"
   },
   "scripts": {
     "start": "HTTPS=true react-scripts start",
