@@ -1,0 +1,131 @@
+@import "../../colors.scss";
+
+div.menu {
+    h1 {
+        margin-bottom: 10px;
+    }
+    h3 {
+        margin-top: 0px;
+        color: darkslategray;
+    }
+
+    &.breadcrumbs {
+        width: 100%;
+    }
+
+    ul.menu-items {
+        padding: 0px;
+        $menu-gap: 20px;
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        gap: $menu-gap;
+
+        li{
+            a {
+                text-decoration: none;
+            }
+        }
+
+        &.breadcrumbs {
+            $triangle-border-width: 30px;
+
+            width: calc(100% - $triangle-border-width);
+            gap: 10px;
+
+            li {
+                display: flex;
+                $breadcrumb-height: 54px;
+                background: $breadcrumb-inactive;
+                flex-grow: 1;
+                height: $breadcrumb-height;
+
+                &:hover {
+                    background: darken($breadcrumb-inactive, 10%);
+                }
+
+                &.active {
+                    background: $breadcrumb-active;
+
+                    &:hover {
+                        background: darken($breadcrumb-active, 10%);
+                    }
+                }
+
+                &::before {
+                    content: " "; 
+                    display: block; 
+                    width: 0; 
+                    height: 0;
+                    border-top: calc($breadcrumb-height / 2) solid transparent;
+                    border-bottom: calc($breadcrumb-height / 2) solid transparent;
+                    border-left: $triangle-border-width solid $page-bg;
+                }
+
+                &::after{
+                    content: " "; 
+                    display: block; 
+                    width: 0; 
+                    height: 0;
+                    border-top: 27px solid transparent;
+                    border-bottom: 27px solid transparent;
+                    border-left: $triangle-border-width solid $breadcrumb-inactive;
+                    margin-right: -$triangle-border-width;
+                    z-index: 2;
+                }
+                &:hover::after {
+                    border-left-color: darken($breadcrumb-inactive, 10%);
+                }
+
+                &.active::after{
+                    border-left-color: $breadcrumb-active;
+                }
+
+                &.active:hover::after {
+                    border-left-color: darken($breadcrumb-active, 10%);
+                }
+
+                a {
+                    width: 100%;
+                    align-self: center;
+                    text-align: center;
+                    color: $form-bg;
+                    font-weight: 800;
+                }
+            }
+        }
+
+        &.buttons{
+            flex-direction: column;
+            margin-top: 40px;
+            
+            li {
+                
+                a {
+                    display: block;
+                    color: white;
+                    width: 200px;
+                    background-color: $breadcrumb-inactive;
+                    padding: 18px 16px;
+                    border-radius: 4px;
+                    font-weight: 800;
+                    font-size: 1.2em;
+                }
+            }
+
+            
+        }
+    }
+
+    &.buttons {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @media screen and (max-width: 600px) {
+            justify-content: center;
+        }
+    }
+    
+}

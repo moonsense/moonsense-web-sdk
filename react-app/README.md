@@ -1,12 +1,14 @@
 # Moonsense SDK - Sample React App
 
-This app is a very basic React Application that includes the Moonsense SDK. The SDK is wired into a 
-modal that offers a 'Swipe to Buy' widget. The SDK is setup to record while that modal is open.
+This app is a very basic React Application that includes the Moonsense SDK. The application walks through a sample new user flow: Registration > Sign-in > Cart > Payment. The steps do not need to be followed in that particular order however the application will step through the stages in that order by default. 
 
-All logic for the App and usage of the SDK are in the [App.js](src/App.js) file.
+At each stage, two sessions are created. A short-lived session tracks the device motion sensors (i.e. accelerometer, gyroscope, etc...) and a long-lived session tracks page interaction (i.e. pointer, text changes, etc...).
 
 <p align="center">
-    <img height="300" src="doc-images/PaymentAppScreenshot.png" />
+    <img height="300" src="doc-images/Registration.png" />
+    <img height="300" src="doc-images/Sign-in.png" />
+    <img height="300" src="doc-images/Checkout.png" />
+    <img height="300" src="doc-images/Payment.png" />
 </p>
 
 ## Setup
@@ -23,14 +25,22 @@ To run the app locally, simply run the following command:
 npm start
 ```
 
-This will launch a local webserver that will serve the react app. Then you should be able to navigate to the page in your brower. Clicking the `Buy` button will trigger the creation of a Moonsense Session and will start recording sensor data. The session ends after a duration of 10 seconds or swiping all the way to the right. Whichever comes first.
+This will launch a local webserver that will serve the react app. Then you should be able to navigate to the page in your brower. The menu will be displayed allowing you to navigate to the page you want. Sessions will be created automatically on each page.
 
 Data for the Session can then be viewed on the [Moonsense Console](https://console.moonsense.cloud) on the Sessions page for your associated App.
 
 
 ## Labeling Data
 
-The app includes a default label of `ReactPayment` on all sessions created. Using other labels can be done by including a `labels` query parameter. For example, adding the following to the url `?labels=BotDetection,SampleApp` would store the sessions with the labels `BotDetection` and `SampleApp` instead of the default label. 
+The app will automatically label each of the steps with a label identifying the step. Using other labels can be done by including a `labels` query parameter. For example, adding the following to the url `?labels=BotDetection,SampleApp` would store the sessions with the labels `BotDetection` and `SampleApp` in addition to the default label. 
+
+## Development and Usage Flags
+
+The following flags can be added as query parameters to change the usage of the application.
+
+* **noSessions=true**: disables the creation of sessions. Especially useful during active development of the pages
+
+* **noFlow=true**: disables automatically stepping through the flow of the application. This flag allows the repeated use of the same page over and over.
 
 ## NOTE
 

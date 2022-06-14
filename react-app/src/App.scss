@@ -1,0 +1,31 @@
+.app-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 5px;
+}
+
+.app {
+    min-width: 600px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 0;
+}
+
+.sdk-version {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 10px 5px 10px;
+    color: darkslategray;
+}
+
+@media screen and (max-width: 600px) {
+    .app {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
