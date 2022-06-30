@@ -19,6 +19,12 @@ Copy `api-key-sample.js` to `api-key.js` and replace the value with the Public T
 
 ## Running the App
 
+First make sure all the dependencies are installed:
+
+```
+npm install
+```
+
 To run the app locally, simply run the following command:
 
 ```
@@ -28,6 +34,12 @@ npm start
 This will launch a local webserver that will serve the react app. Then you should be able to navigate to the page in your brower. The menu will be displayed allowing you to navigate to the page you want. Sessions will be created automatically on each page.
 
 Data for the Session can then be viewed on the [Moonsense Console](https://console.moonsense.cloud) on the Sessions page for your associated App.
+
+### NOTE
+
+For the sensors to be accessible through the browser, the application must be running in a secure context. For this reason the app is launched with `HTTPS=true` and you may see security warnings when navigating to the page. Chrome disallows navigating to insecure localhost pages by default but provides a flag for allowing them. More can be found by navigating to `chrome://flags/#allow-insecure-localhost` in Chrome.
+
+> :warning: **You will not see data without running on HTTPS**
 
 
 ## Labeling Data
@@ -41,9 +53,3 @@ The following flags can be added as query parameters to change the usage of the 
 * **noSessions=true**: disables the creation of sessions. Especially useful during active development of the pages
 
 * **noFlow=true**: disables automatically stepping through the flow of the application. This flag allows the repeated use of the same page over and over.
-
-## NOTE
-
-For the sensors to be accessible through the browser, the application must be running in a secure context. For this reason the app is launched with `HTTPS=true` and you may see security warnings when navigating to the page. Chrome disallows navigating to insecure localhost pages by default but provides a flag for allowing them. More can be found by navigating to `chrome://flags/#allow-insecure-localhost` in Chrome.
-
-> :warning: **You will not see data without running on HTTPS**

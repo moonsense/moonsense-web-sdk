@@ -85,6 +85,14 @@ const App = () => {
      */
     const moonsenseCallback: MoonsenseCallback = {
 
+      onError: (msg) => {
+          if (msg.cause && 
+              (msg.cause as any).response?.status &&
+              (msg.cause as any).response?.status === 401) {
+                alert('Token validation failed. Please verify your Moonsense Public Token');
+          }
+      },
+
       onTargetElement: (_elementId, element) => {
         const elementAttr: {inputName?: string} = {};
 

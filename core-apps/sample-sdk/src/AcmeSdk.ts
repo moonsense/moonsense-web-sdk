@@ -67,7 +67,7 @@ export class AcmeSdk {
             onSessionStarted: function (session: Session): void {
                 // no-op. This is being captured when startSession(...) is called
             },
-            onError: function (msg: string): void {
+            onError: function (msg: Error): void {
                 // Output any errors to the console
                 console.error('Moonsense error', msg);
             }
