@@ -15,7 +15,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.7.2",
-    "@moonsense/moonsense-web-sdk": "1.0.0"
+    "@moonsense/moonsense-web-sdk": "1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
