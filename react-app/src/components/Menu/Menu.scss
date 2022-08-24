@@ -1,3 +1,4 @@
+
 @import "../../colors.scss";
 
 div.menu {
@@ -105,7 +106,7 @@ div.menu {
                     display: block;
                     color: white;
                     width: 200px;
-                    background-color: $breadcrumb-inactive;
+                    background-color: $button-bg;
                     padding: 18px 16px;
                     border-radius: 4px;
                     font-weight: 800;
