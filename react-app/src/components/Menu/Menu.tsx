@@ -23,6 +23,24 @@ const Menu: React.FC<{}> = () => {
     return '';
   }
 
+  const askForPermission = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    const isSafari = navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1;
+
+    if (isSafari) {
+      if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( (DeviceMotionEvent as any).requestPermission ) === "function" ) {
+        e.preventDefault();
+        console.debug('asking permission on safari');
+        (DeviceMotionEvent as any).requestPermission().then(() => {
+          console.log('Safari permission granted');
+        }).catch(() => {
+          console.log('Safari permission denied');
+        }).finally(() => {
+          window.location.href = (e.target as HTMLAnchorElement).href;
+        });
+      }
+    }
+  }
+
   return (
     <div className={`menu ${menuClass}`}>
       {location.pathname === '/' && (
@@ -33,13 +51,13 @@ const Menu: React.FC<{}> = () => {
       )}
       <ul className={`menu-items ${menuClass}`} >
         <li className={addActiveClass('/registration')}>
-          <a href="/registration">Registration</a>
+          <a href="/registration" onClick={(e) => askForPermission(e)}>Registration</a>
         </li>
         <li className={addActiveClass('/sign-in')}>
-          <a href="/sign-in">Sign In</a>
+          <a href="/sign-in" onClick={(e) => askForPermission(e)}>Sign In</a>
         </li>
         <li className={addActiveClass('/checkout')}>
-          <a href="/checkout">Checkout</a>
+          <a href="/checkout" onClick={(e) => askForPermission(e)}>Checkout</a>
         </li>
       </ul>
     </div>

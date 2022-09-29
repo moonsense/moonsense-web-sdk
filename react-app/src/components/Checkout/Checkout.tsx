@@ -148,8 +148,8 @@ const Checkout: React.FC<CommonProps> = (
     }, 750);
   }
 
-  const submitForm = (event: React.FormEvent) => {
-    event.preventDefault();
+  const submitForm = (event: React.FormEvent | null) => {
+    event?.preventDefault();
 
     setOrderSuccess(true);
     closeOrder();
@@ -173,7 +173,7 @@ const Checkout: React.FC<CommonProps> = (
    */
   const sliderUpdate = (event: React.FormEvent<HTMLInputElement>) => {
     if (event.currentTarget.valueAsNumber >= 99) {
-      formRef.current?.requestSubmit();
+      submitForm(null);
     }
   }
 
