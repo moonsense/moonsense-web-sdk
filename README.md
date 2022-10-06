@@ -154,7 +154,7 @@ The SDK records in Sessions. A Session is defined as a single start and stop poi
 
 ```javascript
 // Creates a session that will record for up to 20 seconds
-const session = moonsenseSdk.startSession({
+const session = moonsenseSdk.startSesssion({
     /**
      * The maximum length of time to record a session in milliseconds
      */
