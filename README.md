@@ -36,7 +36,8 @@ npm install --save protobufjs
 
 The SDK requires some configuration information to be setup and associate correctly with your app. To continue, you will need to create a `publicToken` for you app on the [Moonsense Console](https://console.moonsense.cloud/).
 
-The SDK supports integration in a number of ways including as an ES6 module or via CommonJS
+The SDK supports integration in a number of ways including as an ES6 module or via CommonJS. 
+The Moonsense Web SDK can either be incorporated into a separate project using NPM or pulled into a website via a script tag from the Moonsense CDN.
 
 ### Instantiation
 
@@ -146,6 +147,73 @@ moonsenseWebSdk.Moonsense.initialize(sdkConfig);
 <script>
     MoonsenseSdk.Moonsense.initialize(sdkConfig);
 </script>
+```
+
+### CDN
+
+The SDK can be incorporated into any website by pulling it from the Moonsense CDN and starting a session in your own javascript.
+
+To include the SDK, simply add the following to your website. This will pull the latest version of the SDK and make it accessible to your site.
+
+```html
+<script async id="moonsense" src="https://dl.moonsense.io/latest/moonsense-web-sdk.js"></script>
+```
+
+Then you can include your logic to utilize the SDK in your own scripts. In the following example script called `use-sdk.js`, the SDK is initialized with the App `publicToken`, a 60 second long session is started and the `sessionId` is logged to the console. The script is designed to be included asynchronously and therefore includes logic to wait for the Moonsense SDK to be loaded first.
+
+```javascript
+/**
+ * filename: use-sdk.js
+ * 
+ * This script is designed to run async. It will look for the 
+ * Moonsense SDK script tag and add an `onload` listener to 
+ * trigger once the script is loaded by the browser.
+ * 
+ * Once triggered, the script will initialize the SDK,
+ * start a 60s long session and log the session ID to the
+ * console.
+ */
+
+// Grab the list of scripts
+const scripts = document.getElementsByTagName('script');
+let moonsenseScript;
+
+// Find the Moonsense Script
+for (s of scripts) {
+    if (s.src.endsWith('moonsense-web-sdk.js')) {
+        moonsenseScript = s;
+        break;
+    }
+}
+
+if (moonsenseScript) {
+    // Run the code to start by a session once the
+    // Moonsense script is loaded from the CDN
+    moonsenseScript.onload = ((event) => {
+        console.log('Moonsense Script loaded');
+
+        const moonsense = MoonsenseSdk.Moonsense;
+        moonsense.initialize({
+            publicToken: '<public token goes here>'
+        });
+
+        const session = moonsense.startSession({
+            duration: 60000, // 60 Seconds
+        });
+
+        session.getRemoteId().then((sessionId) => {
+            console.log('SessionId', sessionId);
+        }).catch((error) => {
+            console.warn('Error getting Moonsense SessionId', error);
+        })
+    });
+}
+```
+
+Now add the script to the HTML file.
+
+```html
+<script async src="use-sdk.js"></script>
 ```
 
 ### Recording
