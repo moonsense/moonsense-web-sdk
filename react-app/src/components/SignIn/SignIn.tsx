@@ -42,16 +42,16 @@ const SignIn: React.FC<CommonProps> = (
   }
 
   useEffect(() => {
-    if (Utils.shouldCreateSessions() && !sessionsStarted && appProps.clientSessionGroupId) {
+    if (Utils.shouldCreateSessions() && !sessionsStarted && appProps.journeyId) {
       sessionsStarted = true;
       setSessionsStarted(sessionsStarted);
 
       // Create the Motion Session
-      const motionConfig = getMotionSessionConfig(['sign-in'], appProps.clientSessionGroupId);
+      const motionConfig = getMotionSessionConfig(['sign-in'], appProps.journeyId);
       Moonsense.startSession(motionConfig);
 
       // Create Interaction Session
-      const interactionConfig = getInteractionSessionConfig(['sign-in'], appProps.clientSessionGroupId);
+      const interactionConfig = getInteractionSessionConfig(['sign-in'], appProps.journeyId);
       setInteractionSession(Moonsense.startSession(interactionConfig));
     }
   }, [sessionsStarted, appProps])

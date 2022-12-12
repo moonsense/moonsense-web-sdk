@@ -87,12 +87,12 @@ const Checkout: React.FC<CommonProps> = (
 
     if (Utils.shouldCreateSessions()) {
       // Starts recording a session with a 60 second duration and labeled 'ReactPayment'
-      const transMotionConfig = getMotionSessionConfig(['payment'], appProps.clientSessionGroupId);
+      const transMotionConfig = getMotionSessionConfig(['payment'], appProps.journeyId);
       Moonsense.startSession(transMotionConfig);
 
       // Create Interaction Session
       const interactionConfig = {
-        ...getInteractionSessionConfig(['payment'], appProps.clientSessionGroupId),
+        ...getInteractionSessionConfig(['payment'], appProps.journeyId),
         duration: 60000
       };
       setInteractionSession(Moonsense.startSession(interactionConfig));
@@ -106,16 +106,16 @@ const Checkout: React.FC<CommonProps> = (
   });
 
   useEffect(() => {
-    if (Utils.shouldCreateSessions() && !sessionsStarted && appProps.clientSessionGroupId) {
+    if (Utils.shouldCreateSessions() && !sessionsStarted && appProps.journeyId) {
       sessionsStarted = true;
       setSessionsStarted(sessionsStarted);
 
       // Create the Motion Session
-      const motionConfig = getMotionSessionConfig(['checkout'], appProps.clientSessionGroupId);
+      const motionConfig = getMotionSessionConfig(['checkout'], appProps.journeyId);
       Moonsense.startSession(motionConfig);
 
       // Create Interaction Session
-      const interactionConfig = getInteractionSessionConfig(['checkout'], appProps.clientSessionGroupId);
+      const interactionConfig = getInteractionSessionConfig(['checkout'], appProps.journeyId);
       Moonsense.startSession(interactionConfig);
     }
   }, [sessionsStarted, appProps]);

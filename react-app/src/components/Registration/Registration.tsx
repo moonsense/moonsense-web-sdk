@@ -45,17 +45,16 @@ const Registration: React.FC<CommonProps> = (
   }
 
   useEffect(() => {
-    if (Utils.shouldCreateSessions() && !sessionsStarted && appProps.clientSessionGroupId) {
+    if (Utils.shouldCreateSessions() && !sessionsStarted && appProps.journeyId) {
       sessionsStarted = true;
       setSessionsStarted(sessionsStarted);
 
-
       // Create the Motion Session
-      const motionConfig = getMotionSessionConfig(['registration'], appProps.clientSessionGroupId);
+      const motionConfig = getMotionSessionConfig(['registration'], appProps.journeyId);
       Moonsense.startSession(motionConfig);
 
       // Create Interaction Session
-      const interactionConfig = getInteractionSessionConfig(['registration'], appProps.clientSessionGroupId);
+      const interactionConfig = getInteractionSessionConfig(['registration'], appProps.journeyId);
       setInteractionSession(Moonsense.startSession(interactionConfig));
     }
   }, [sessionsStarted, appProps])

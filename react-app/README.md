@@ -28,7 +28,7 @@ npm install
 To run the app locally, simply run the following command:
 
 ```
-npm start
+HTTPS=true npm start
 ```
 
 This will launch a local webserver that will serve the react app. Then you should be able to navigate to the page in your brower. The menu will be displayed allowing you to navigate to the page you want. Sessions will be created automatically on each page.
