@@ -20,7 +20,7 @@
     "typescript": "^4.7.2"
   },
   "optionalDependencies": {
-    "@moonsense/moonsense-web-features-sdk": "^1"
+    "@moonsense/moonsense-web-features-sdk": "^0.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

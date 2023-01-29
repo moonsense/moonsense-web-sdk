@@ -10,6 +10,7 @@ import Menu from "./components/Menu/Menu";
 import Registration from "./components/Registration/Registration";
 import { moonsensePublicToken } from './api-key';
 import Moonsense, { AvailableSensors, FeatureGenerator, LogLevel, MoonsenseCallback, SessionConfig } from '@moonsense/moonsense-web-sdk';
+import { DeviceMotionFeatureGenerator, PointerFeatureGenerator } from '@moonsense/moonsense-web-features-sdk';
 import SignIn from "./components/SignIn/SignIn";
 import { useEffect, useState } from "react";
 
@@ -56,12 +57,17 @@ const getQueryLabels = (): string[] => {
 }
 
 let motionFeatures: FeatureGenerator[] = [];
+let interactionFeatures: FeatureGenerator[] = [];
 
 if (featuresSdk) {
 
   motionFeatures = [
-    new featuresSdk.MeanFeatureGenerator(featuresSdk.MeanFeatureGenerator.SupportedSensors)
+    new DeviceMotionFeatureGenerator(),
   ];
+
+  interactionFeatures = [
+    new PointerFeatureGenerator(),
+  ]
 }
 
 
@@ -79,6 +85,7 @@ const getInteractionSessionConfig = (labels: string[] = [], journeyId?: string):
     ...defaultInteractionSessionConfig,
     labels: ['interaction'].concat(getQueryLabels(), labels),
     journeyId,
+    featureGenerators: interactionFeatures,
   }
 }
 
