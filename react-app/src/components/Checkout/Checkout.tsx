@@ -39,7 +39,7 @@ const Checkout: React.FC<CommonProps> = (
   const formRef = useRef<HTMLFormElement>(null);
   const sliderRef = useRef<HTMLInputElement>(null);
   const [interactionSession, setInteractionSession] = useState<Session>();
-  const nagivate = useNavigate();
+  const navigate = useNavigate();
 
   const taxRate = 0.075; // establish a tax rate
 
@@ -142,7 +142,9 @@ const Checkout: React.FC<CommonProps> = (
 
         // Go back to the home page
         if (Utils.shouldNavigateToNextStep()) {
-          nagivate('/');
+          navigate('/');
+        } else {
+          navigate(0); // reload the page
         }
       }, 750);
     }, 750);

@@ -18,7 +18,7 @@ const Registration: React.FC<CommonProps> = (
 
   let [sessionsStarted, setSessionsStarted] = useState(false);
   const [interactionSession, setInteractionSession] = useState<Session>();
-  const nagivate = useNavigate();
+  const navigate = useNavigate();
 
   const submitForm = (event: React.FormEvent) => {
     event.preventDefault();
@@ -26,7 +26,9 @@ const Registration: React.FC<CommonProps> = (
     Moonsense.stopAllSessions();
     
     if (Utils.shouldNavigateToNextStep()) {
-      nagivate('/sign-in');
+      navigate('/sign-in'); // go to the sign-in page
+    } else {
+      navigate(0); // reload the page
     }
 
   };

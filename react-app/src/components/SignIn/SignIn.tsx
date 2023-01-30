@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Moonsense, { Session } from "@moonsense/moonsense-web-sdk";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { CommonProps, getInteractionSessionConfig, getMotionSessionConfig } from "../../App";
 import { Utils } from "../../Utils";
 
@@ -15,7 +15,7 @@ const SignIn: React.FC<CommonProps> = (
 
   let [sessionsStarted, setSessionsStarted] = useState(false);
   const [interactionSession, setInteractionSession] = useState<Session>();
-  const nagivate = useNavigate();
+  const navigate = useNavigate();
 
   const submitForm = (event: React.FormEvent) => {
     event.preventDefault();
@@ -23,7 +23,9 @@ const SignIn: React.FC<CommonProps> = (
     Moonsense.stopAllSessions();
     
     if (Utils.shouldNavigateToNextStep()) {
-      nagivate('/checkout');
+      navigate('/checkout'); // go to the checkout page
+    } else {
+      navigate(0); // reload the page
     }
 
   };

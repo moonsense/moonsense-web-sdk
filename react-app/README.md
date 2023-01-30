@@ -8,7 +8,6 @@ At each stage, two sessions are created. A short-lived session tracks the device
     <img height="300" src="doc-images/Registration.png" />
     <img height="300" src="doc-images/Sign-in.png" />
     <img height="300" src="doc-images/Checkout.png" />
-    <img height="300" src="doc-images/Payment.png" />
 </p>
 
 ## Setup
