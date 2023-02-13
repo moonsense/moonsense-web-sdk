@@ -10,7 +10,6 @@ import Menu from "./components/Menu/Menu";
 import Registration from "./components/Registration/Registration";
 import { moonsensePublicToken } from './api-key';
 import Moonsense, { AvailableSensors, FeatureGenerator, LogLevel, MoonsenseCallback, SessionConfig } from '@moonsense/moonsense-web-sdk';
-import { DeviceMotionFeatureGenerator, PointerFeatureGenerator } from '@moonsense/moonsense-web-features-sdk';
 import SignIn from "./components/SignIn/SignIn";
 import { useEffect, useState } from "react";
 
@@ -62,11 +61,11 @@ let interactionFeatures: FeatureGenerator[] = [];
 if (featuresSdk) {
 
   motionFeatures = [
-    new DeviceMotionFeatureGenerator(),
+    new featuresSdk.DeviceMotionFeatureGenerator(),
   ];
 
   interactionFeatures = [
-    new PointerFeatureGenerator(),
+    new featuresSdk.PointerFeatureGenerator(),
   ]
 }
 
