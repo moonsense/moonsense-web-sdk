@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "protobufjs": "^6.11.2",
-    "@moonsense/moonsense-web-core-sdk": "1.6.2",
+    "@moonsense/moonsense-web-core-sdk": "1.7.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
