@@ -27,11 +27,6 @@ The SDK is setup using [Node Package Manager (NPM)](https://docs.npmjs.com/about
 npm install --save @moonsense/moonsense-web-sdk
 ```
 
-- If your project does not already include ProtobufJS or you get a peerDependency warning, you will need to install it
-```
-npm install --save protobufjs
-```
-
 ## Usage
 
 The SDK requires some configuration information to be setup and associate correctly with your app. To continue, you will need to create a `publicToken` for you app on the [Moonsense Console](https://console.moonsense.cloud/).
